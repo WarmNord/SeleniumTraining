@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-public class HW {
+public class HW03 {
     private static ChromeDriver driver;
 
     @BeforeAll
@@ -16,10 +15,12 @@ public class HW {
     }
 
     @Test
-    @DisplayName("Open github")
+    @DisplayName("Login")
     public void hw02Test() {
-        driver.get("https://github.com/WarmNord");
-        driver.findElement(By.cssSelector(".p-nickname.vcard-username.d-block"));
+        driver.get("http://localhost/litecart/admin/");
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
     }
 
     @AfterAll
@@ -27,5 +28,4 @@ public class HW {
         driver.quit();
         driver = null;
     }
-
 }
