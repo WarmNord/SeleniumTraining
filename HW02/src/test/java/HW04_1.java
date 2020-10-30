@@ -2,20 +2,10 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class HW04_1 extends TestBase {
-
-
-    private List<String> getNameElem(List<WebElement> elements) {
-        List<String> names = new ArrayList<>();
-        for (WebElement e : elements) {
-            names.add(e.getText());
-        }
-        return names;
-    }
 
     @BeforeAll
     public static void Login() {

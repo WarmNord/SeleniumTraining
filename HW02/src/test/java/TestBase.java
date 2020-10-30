@@ -4,6 +4,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -23,6 +25,14 @@ public class TestBase {
 
     public boolean areElementsPresent(WebDriver driver, By locator) {
         return driver.findElements(locator).size() > 0;
+    }
+
+    public List<String> getNameElem(List<WebElement> elements) {
+        List<String> names = new ArrayList<>();
+        for (WebElement e : elements) {
+            names.add(e.getText());
+        }
+        return names;
     }
 
     @BeforeAll
