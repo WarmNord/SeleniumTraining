@@ -25,9 +25,11 @@ public class HW05_2 extends TestBase {
         //цены (обычная и акционная)
         WebElement mPriceRegular = driver.findElement(By.cssSelector("#box-campaigns .regular-price"));
         String mainPagePriceRegular = mPriceRegular.getText();
+        String pRFonZ = mPriceRegular.getCssValue("font-size");
 
         WebElement mPriceSale = driver.findElement(By.cssSelector("#box-campaigns .campaign-price"));
         String mainPagePriceSale = mPriceSale.getText();
+        String pSFonZ = mPriceSale.getCssValue("font-size");
 
         //обычная цена зачёркнутая и серая
         String price = mPriceRegular.getTagName();
@@ -47,6 +49,11 @@ public class HW05_2 extends TestBase {
         int priceS = Integer.parseInt(mainPagePriceSale.substring(1));
         Assertions.assertTrue(priceU > priceS);
 
+        int pRSF = Integer.parseInt(pRFonZ.substring(0,2));
+        int pSSF = Integer.parseInt(pSFonZ.substring(0,2));
+
+        Assertions.assertTrue(pRSF < pSSF);
+
         driver.get("http://localhost/litecart/en/rubber-ducks-c-1/subcategory-c-2/yellow-duck-p-1");
 
         // текст названия товара
@@ -59,10 +66,12 @@ public class HW05_2 extends TestBase {
         WebElement priceRegular = driver.findElement(By.className("regular-price"));
         String pRegular = priceRegular.getText();
         String priceSecond = priceRegular.getTagName();
+        String pRFZ = priceRegular.getCssValue("font-size");
 
         WebElement priceSale = driver.findElement(By.className("campaign-price"));
         String pSale = priceSale.getText();
         String priceRedSecond = priceSale.getTagName();
+        String pSFZ = priceSale.getCssValue("font-size");
 
         Assertions.assertEquals(pRegular, mainPagePriceRegular);
         Assertions.assertEquals(pSale, mainPagePriceSale);
@@ -84,6 +93,10 @@ public class HW05_2 extends TestBase {
         int priceUSecond = Integer.parseInt(pRegular.substring(1));
         int priceSSecond = Integer.parseInt(pSale.substring(1));
         Assertions.assertTrue(priceUSecond > priceSSecond);
+
+        int pRS = Integer.parseInt(pRFZ.substring(0,2));
+        int pSS = Integer.parseInt(pSFZ.substring(0,2));
+        Assertions.assertTrue(pRS < pSS);
 
 
     }
